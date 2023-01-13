@@ -1,27 +1,37 @@
 # gd-icon-renderer-web
 
-TODO: Write a description here
+A server-side renderer API for Geometry Dash icons, made with [gd-icon-renderer](https://github.com/oatmealine/gd-icon-renderer)
 
-## Installation
-
-TODO: Write installation instructions here
+| ![](https://gdicon.oat.zone/icon.png?type=ball&value=35&color1=15&color2=19&glow=1) |
+| :---: |
+| Result given the input `/icon.png?type=ball&value=35&color1=15&color2=19&glow=1`           |
 
 ## Usage
 
-TODO: Write usage instructions here
+`https://gdicon.oat.zone/icon.png?type=ball&value=35&color1=15&color2=19&glow=1`
 
-## Development
+`color1` and `color2` can accept numeric color values or hex color strings; file format is not limited to `png`, can be `webp`, `jpg`, etc.
 
-TODO: Write development instructions here
+## Self-hosting
 
-## Contributing
+### Installation
 
-1. Fork it (<https://github.com/your-github-user/gd-icon-renderer-web/fork>)
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create a new Pull Request
+0. You'll need [`libvips`](https://www.libvips.org/) (and its development packages, for compilation) as well as [the Crystal compiler](https://crystal-lang.org/) on your machine. Get those from your package manager; I'm sure you know how.
 
-## Contributors
+1. Clone the repo:
+    ```sh
+    git clone https://github.com/oatmealine/gd-icon-renderer-web
+    ```
+2. Install dependencies:
+    ```sh
+    shards install
+    ```
+3. Build:
+    ```sh
+    shards build
+    ```
 
-- [Jill "oatmealine" Monoids](https://github.com/your-github-user) - creator and maintainer
+### Usage
+
+1. Fill out the info in `.env.example` as necessary
+2. Run `bin/gd-icon-renderer-web` (or `shards run` for development environments)
