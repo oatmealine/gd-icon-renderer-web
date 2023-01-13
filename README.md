@@ -34,4 +34,13 @@ A server-side renderer API for Geometry Dash icons, made with [gd-icon-renderer]
 ### Usage
 
 1. Fill out the info in `.env.example` as necessary
-2. Run `bin/gd-icon-renderer-web` (or `shards run` for development environments)
+2. Put the following files from your Geometry Dash resources folder into `data/` (create if it doesn't exist):
+    ```
+    GJ_GameSheet02-uhd.plist
+    GJ_GameSheet02-uhd.png
+    GJ_GameSheetGlow-uhd.plist
+    GJ_GameSheetGlow-uhd.png
+    Robot_AnimDesc2.plist
+    Spider_AnimDesc2.plist
+    ```
+3. Run `bin/gd-icon-renderer-web` (or `shards run` for development environments)
