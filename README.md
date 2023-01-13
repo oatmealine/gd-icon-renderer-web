@@ -33,7 +33,7 @@ A server-side renderer API for Geometry Dash icons, made with [gd-icon-renderer]
 
 ### Usage
 
-1. Fill out the info in `.env.example` as necessary
+1. Fill out the info in `.env.example` (into `.env`) as necessary
 2. Put the following files from your Geometry Dash resources folder into `data/` (create if it doesn't exist):
     ```
     GJ_GameSheet02-uhd.plist

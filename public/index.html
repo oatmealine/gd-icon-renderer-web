@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+		<meta charset="utf-8"/>
+    <title>GD Icon Renderer</title>
+    <link rel="stylesheet" href="/style.css"/>
+		<meta name="viewport" content="width=device-width"/>
+    <script type="application/javascript" src="/script.js"></script>
+  </head>
+  <body>
+    <main>
+      <div class="icon">
+        <img src="" id="preview">
+      </div>
+      <pre id="url">/icon.png</pre>
+      <div class="inputs">
+        <div class="input">
+          <div class="input-label"><label for="input-type">Gamemode</label><div id="label-type">cube</div></div>
+          <input type="range" min="0" max="6" value="0" name="type" id="input-type">
+        </div>
+        <div class="input">
+          <div class="input-label"><label for="input-value">Value</label><div id="label-value">1/142</div></div>
+          <input type="range" min="1" max="6" value="0" name="value" id="input-value">
+        </div>
+        <div class="input">
+          <div class="input-label"><label for="input-color1">Color 1</label><div id="label-color1">0</div></div>
+          <input type="range" min="0" max="41" value="0" name="color1" id="input-color1">
+        </div>
+        <div class="input">
+          <div class="input-label"><label for="input-color2">Color 2</label><div id="label-color2">3</div></div>
+          <input type="range" min="0" max="41" value="3" name="color2" id="input-color2">
+        </div>
+        <div class="input">
+          <div class="input-label"><label for="input-glow">Glow</label><div></div></div>
+          <input type="checkbox" value="0" name="glow" id="input-glow">
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
