@@ -1,8 +1,8 @@
 {
   gd-icon-renderer = {
     url = "https://github.com/oatmealine/gd-icon-renderer.git";
-    rev = "3c03dd0850949dafaae4eae1f435f3c73a7779cd";
-    sha256 = "0hlfbzdk2v6swbw3g13myizz66flr53vac9s8b2si8l0ww35dllx";
+    rev = "eef47dd9cbe8e8dc002d6fc7d9922bd65061e772";
+    sha256 = "169a4bp6v6g30w532zf30f1ppjwxwsyg5wis4snnwxhhqzm26a0a";
   };
   vips = {
     url = "https://github.com/naqvis/crystal-vips.git";

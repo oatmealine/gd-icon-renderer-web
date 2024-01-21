@@ -35,6 +35,8 @@ function getURL() {
   params.set('value', $('#input-value').value);
   params.set('color1', $('#input-color1').value);
   params.set('color2', $('#input-color2').value);
+  const col3 = $('#input-color3').value;
+  if (col3 !== '-1') params.set('color3', col3);
   if ($('#input-glow').checked)
     params.set('glow', 1);
 
@@ -58,12 +60,14 @@ document.addEventListener('DOMContentLoaded', () => {
     $('#input-value'),
     $('#input-color1'),
     $('#input-color2'),
+    $('#input-color3'),
     $('#input-glow'),
   ];
 
   $('#input-type').max = Object.keys(gamemodes).length - 1;
   $('#input-color1').max = maxColor - 1;
   $('#input-color2').max = maxColor - 1;
+  $('#input-color3').max = maxColor - 1;
 
   fields.forEach(field => {field.addEventListener('change', updateIcon)});
 
@@ -94,6 +98,13 @@ document.addEventListener('DOMContentLoaded', () => {
   };
   $('#input-color2').addEventListener('input', updateColor2Input);
   updateColor2Input();
+
+  const updateColor3Input = () => {
+    const col3 = $('#input-color3').value;
+    $('#label-color3').innerText = col3 === '-1' ? 'None' : col3;
+  };
+  $('#input-color3').addEventListener('input', updateColor3Input);
+  updateColor3Input();
 
   $('#preview').addEventListener('load', () => {
     $('.icon').animate([
