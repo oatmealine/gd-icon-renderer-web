@@ -10,18 +10,24 @@ const gamemodes = {
   3: 'ufo',
   4: 'wave',
   5: 'robot',
-  6: 'spider'
+  6: 'spider',
+  7: 'swing',
+  8: 'jetpack',
 };
 
 const maxIcons = {
-  0: 142,
-  1: 51,
-  2: 43,
-  3: 35,
-  4: 35,
-  5: 26,
-  6: 17
+  0: 484,
+  1: 169,
+  2: 118,
+  3: 149,
+  4: 96,
+  5: 68,
+  6: 69,
+  7: 43,
+  8: 5,
 }
+
+const maxColor = 107
 
 function getURL() {
   let params = new URLSearchParams();
@@ -29,6 +35,8 @@ function getURL() {
   params.set('value', $('#input-value').value);
   params.set('color1', $('#input-color1').value);
   params.set('color2', $('#input-color2').value);
+  const col3 = $('#input-color3').value;
+  if (col3 !== '-1') params.set('color3', col3);
   if ($('#input-glow').checked)
     params.set('glow', 1);
 
@@ -52,8 +60,14 @@ document.addEventListener('DOMContentLoaded', () => {
     $('#input-value'),
     $('#input-color1'),
     $('#input-color2'),
+    $('#input-color3'),
     $('#input-glow'),
   ];
+
+  $('#input-type').max = Object.keys(gamemodes).length - 1;
+  $('#input-color1').max = maxColor - 1;
+  $('#input-color2').max = maxColor - 1;
+  $('#input-color3').max = maxColor - 1;
 
   fields.forEach(field => {field.addEventListener('change', updateIcon)});
 
@@ -84,6 +98,13 @@ document.addEventListener('DOMContentLoaded', () => {
   };
   $('#input-color2').addEventListener('input', updateColor2Input);
   updateColor2Input();
+
+  const updateColor3Input = () => {
+    const col3 = $('#input-color3').value;
+    $('#label-color3').innerText = col3 === '-1' ? 'None' : col3;
+  };
+  $('#input-color3').addEventListener('input', updateColor3Input);
+  updateColor3Input();
 
   $('#preview').addEventListener('load', () => {
     $('.icon').animate([

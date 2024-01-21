@@ -12,7 +12,7 @@
     (with flake-utils.lib; eachSystem defaultSystems) (system:
       let
         pkgs = nixpkgs.legacyPackages.${system};
-        inherit (crystal-flake.packages.${system}) crystal shards;
+        inherit (crystal-flake.packages.${system}) crystal;
       in
       rec {
         packages = flake-utils.lib.flattenTree rec {
@@ -44,9 +44,10 @@
           ];
 
           nativeBuildInputs = with pkgs; [
-            pkgconfig
+            pkg-config
             crystal
             shards
+            vips
           ];
         };
       });

@@ -2,13 +2,13 @@
 
 A server-side renderer API for Geometry Dash icons, made with [gd-icon-renderer](https://github.com/oatmealine/gd-icon-renderer)
 
-| ![](https://gdicon.oat.zone/icon.png?type=ball&value=35&color1=15&color2=19&glow=1) |
+| ![](https://gdicon.oat.zone/icon.png?type=cube&value=181&color1=8&color2=70) |
 | :---: |
-| Result given the input `/icon.png?type=ball&value=35&color1=15&color2=19&glow=1`           |
+| Result given the input `/icon.png?type=cube&value=181&color1=8&color2=70`           |
 
 ## Usage
 
-`https://gdicon.oat.zone/icon.png?type=ball&value=35&color1=15&color2=19&glow=1`
+`https://gdicon.oat.zone/icon.png?type=cube&value=181&color1=8&color2=70`
 
 `color1` and `color2` can accept numeric color values or hex color strings; file format is not limited to `png`, can be `webp`, `jpg`, etc.
 
@@ -36,11 +36,8 @@ A server-side renderer API for Geometry Dash icons, made with [gd-icon-renderer]
 1. Fill out the info in `.env.example` (into `.env`) as necessary
 2. Put the following files from your Geometry Dash resources folder into `data/` (create if it doesn't exist):
     ```
-    GJ_GameSheet02-uhd.plist
-    GJ_GameSheet02-uhd.png
-    GJ_GameSheetGlow-uhd.plist
-    GJ_GameSheetGlow-uhd.png
-    Robot_AnimDesc2.plist
-    Spider_AnimDesc2.plist
+    icons/*-uhd.*
+    Robot_AnimDesc.plist
+    Spider_AnimDesc.plist
     ```
 3. Run `bin/gd-icon-renderer-web` (or `shards run` for development environments)
