@@ -67,11 +67,9 @@ module IconRendererServer
           color3 = parse_color(query["color3"]?)
 
           icon_type = query["type"]? || "cube"
-          #icon_i = query["value"]?.try &.to_i? || 1
-          icon_i = 1
+          icon_i = query["value"]?.try &.to_i? || 1
 
-          #gamemode = IconRenderer::Constants::GamemodeType.parse(icon_type)
-          gamemode = IconRenderer::Constants::GamemodeType::Ship
+          gamemode = IconRenderer::Constants::GamemodeType.parse(icon_type)
           basename = IconRenderer::Renderer.get_basename(gamemode, icon_i)
           sheet = IconRenderer::Assets.load_spritesheet("data/icons/#{basename}-uhd.plist")
 
