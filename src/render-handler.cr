@@ -3,10 +3,8 @@ require "gd-icon-renderer"
 require "mime"
 
 module IconRendererServer
-  GAME_SHEET_02 = IconRenderer::Assets.load_spritesheet("data/GJ_GameSheet02-uhd.plist")
-  GAME_SHEET_GLOW = IconRenderer::Assets.load_spritesheet("data/GJ_GameSheetGlow-uhd.plist")
-  ROBOT_ANIMATIONS = IconRenderer::Assets.load_animations("data/Robot_AnimDesc2.plist")
-  SPIDER_ANIMATIONS = IconRenderer::Assets.load_animations("data/Spider_AnimDesc2.plist")
+  ROBOT_ANIMATIONS = IconRenderer::Assets.load_animations("data/Robot_AnimDesc.plist")
+  SPIDER_ANIMATIONS = IconRenderer::Assets.load_animations("data/Spider_AnimDesc.plist")
 
   class RenderHandler
     include HTTP::Handler
@@ -42,7 +40,7 @@ module IconRendererServer
       return [red/255, green/255, blue/255, alpha/255]
     end
 
-    private def parse_color(color : String?)
+    private def parse_color(color : String?) : Array(Float64)?
       if !color
         return nil
       end
@@ -66,14 +64,24 @@ module IconRendererServer
         begin
           color1 = parse_color(query["color1"]?)
           color2 = parse_color(query["color2"]?)
+          color3 = parse_color(query["color3"]?)
+
+          icon_type = query["type"]? || "cube"
+          #icon_i = query["value"]?.try &.to_i? || 1
+          icon_i = 1
+
+          #gamemode = IconRenderer::Constants::GamemodeType.parse(icon_type)
+          gamemode = IconRenderer::Constants::GamemodeType::Ship
+          basename = IconRenderer::Renderer.get_basename(gamemode, icon_i)
+          sheet = IconRenderer::Assets.load_spritesheet("data/icons/#{basename}-uhd.plist")
 
           icon_img = IconRenderer::Renderer.render_icon(
-            query["type"]? || "cube",
-            query["value"]?.try &.to_i? || 1,
+            gamemode, icon_i,
             color1 || IconRenderer::Constants::COLORS[0],
             color2 || IconRenderer::Constants::COLORS[3],
+            color3,
             query["glow"]? ? true : false,
-            GAME_SHEET_02, GAME_SHEET_GLOW, ROBOT_ANIMATIONS, SPIDER_ANIMATIONS
+            sheet, ROBOT_ANIMATIONS, SPIDER_ANIMATIONS
           )
 
           alpha = icon_img.extract_band(3)

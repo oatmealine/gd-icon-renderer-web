@@ -11,6 +11,7 @@ targets:
 dependencies:
   gd-icon-renderer:
     github: oatmealine/gd-icon-renderer
+    branch: 2.2
   vips:
     github: naqvis/crystal-vips
     branch: main
