@@ -10,18 +10,24 @@ const gamemodes = {
   3: 'ufo',
   4: 'wave',
   5: 'robot',
-  6: 'spider'
+  6: 'spider',
+  7: 'swing',
+  8: 'jetpack',
 };
 
 const maxIcons = {
-  0: 142,
-  1: 51,
-  2: 43,
-  3: 35,
-  4: 35,
-  5: 26,
-  6: 17
+  0: 484,
+  1: 169,
+  2: 118,
+  3: 149,
+  4: 96,
+  5: 68,
+  6: 69,
+  7: 43,
+  8: 5,
 }
+
+const maxColor = 107
 
 function getURL() {
   let params = new URLSearchParams();
@@ -54,6 +60,10 @@ document.addEventListener('DOMContentLoaded', () => {
     $('#input-color2'),
     $('#input-glow'),
   ];
+
+  $('#input-type').max = Object.keys(gamemodes).length - 1;
+  $('#input-color1').max = maxColor - 1;
+  $('#input-color2').max = maxColor - 1;
 
   fields.forEach(field => {field.addEventListener('change', updateIcon)});
 
