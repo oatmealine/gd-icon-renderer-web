@@ -1,5 +1,5 @@
 name: gd-icon-renderer-web
-version: 0.1.0
+version: 0.2.0
 
 authors:
   - Jill "oatmealine" Monoids <oatmealine@disroot.org>
@@ -11,7 +11,6 @@ targets:
 dependencies:
   gd-icon-renderer:
     github: oatmealine/gd-icon-renderer
-    branch: 2.2
   vips:
     github: naqvis/crystal-vips
     branch: main

@@ -1,7 +1,7 @@
 {
   gd-icon-renderer = {
     url = "https://github.com/oatmealine/gd-icon-renderer.git";
-    rev = "eef47dd9cbe8e8dc002d6fc7d9922bd65061e772";
+    rev = "4e0c9b8a5a23376ae7be7d19087b7ce7d5d5a77d";
     sha256 = "169a4bp6v6g30w532zf30f1ppjwxwsyg5wis4snnwxhhqzm26a0a";
   };
   vips = {
