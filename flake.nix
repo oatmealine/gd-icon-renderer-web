@@ -46,9 +46,65 @@
           nativeBuildInputs = with pkgs; [
             pkg-config
             crystal
-            shards
-            vips
           ];
         };
-      });
+      }) // {
+        nixosModules = rec {
+          gd-icon-renderer-web = { config, lib, pkgs, system, ... }:
+          with lib;
+          let
+            cfg = config.services.gd-icon-renderer-web;
+          in {
+            options.services.gd-icon-renderer-web = {
+              enable = mkEnableOption "Enables the gd-icon-renderer-web server";
+
+              domain = mkOption {
+                type = types.nullOr types.str;
+                default = null;
+                description = "Which domain to host the server under; if null, NGINX is not used";
+              };
+              port = mkOption {
+                type = types.port;
+                default = 3400;
+              };
+              package = mkOption {
+                type = types.package;
+                default = self.defaultPackage.${system};
+              };
+            };
+
+            config = mkIf cfg.enable {
+              systemd.services."gd-icon-renderer-web" = {
+                wantedBy = [ "multi-user.target" ];
+
+                environment = {
+                  LISTEN_ON = "http://localhost:${toString cfg.port}";
+                };
+
+                serviceConfig = {
+                  Restart = "always";
+                  RuntimeMaxSec = "30m";
+                  ExecStart = "${getExe cfg.package}";
+                  DynamicUser = "yes";
+                  StateDirectory = "gd-icon-renderer-web";
+                  StateDirectoryMode = "0755";
+                  # you want to put your gd assets here
+                  WorkingDirectory = "/var/lib/gd-icon-renderer-web/";
+                };
+              };
+
+              services.nginx = mkIf (cfg.domain != null) {
+                virtualHosts."${cfg.domain}" = {
+                  enableACME = true;
+                  forceSSL = true;
+                  locations."/" = {
+                    proxyPass = "http://127.0.0.1:${toString cfg.port}/";
+                  };
+                };
+              };
+            };
+          };
+          default = gd-icon-renderer-web;
+        };
+      };
 }
