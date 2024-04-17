@@ -78,7 +78,7 @@
                 wantedBy = [ "multi-user.target" ];
 
                 environment = {
-                  LISTEN_ON = "http://localhost:${toString cfg.port}";
+                  LISTEN_ON = "http://127.0.0.1:${toString cfg.port}";
                 };
 
                 serviceConfig = {
