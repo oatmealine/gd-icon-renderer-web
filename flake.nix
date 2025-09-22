@@ -33,6 +33,12 @@
             doInstallCheck = false;
 
             crystal = crystal;
+
+            meta = {
+              description = "A server-side renderer API for Geometry Dash icons";
+              homepage = "https://github.com/oatmealine/gd-icon-renderer-web/";
+              mainProgram = "gd-icon-renderer-web";
+            };
           };
         };
 
