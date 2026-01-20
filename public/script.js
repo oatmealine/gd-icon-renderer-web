@@ -16,7 +16,7 @@ const gamemodes = {
 };
 
 const maxIcons = {
-  0: 484,
+  0: 485,
   1: 169,
   2: 118,
   3: 149,
