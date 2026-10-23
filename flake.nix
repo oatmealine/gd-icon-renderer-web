@@ -5,14 +5,13 @@
   inputs = {
     flake-utils.url = "github:numtide/flake-utils";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
-    crystal-flake.url = "github:manveru/crystal-flake";
   };
 
-  outputs = { self, nixpkgs, flake-utils, crystal-flake }:
+  outputs = { self, nixpkgs, flake-utils }:
     (with flake-utils.lib; eachSystem defaultSystems) (system:
       let
         pkgs = nixpkgs.legacyPackages.${system};
-        inherit (crystal-flake.packages.${system}) crystal;
+        crystal = pkgs.crystal;
       in
       rec {
         packages = flake-utils.lib.flattenTree rec {
@@ -23,16 +22,9 @@
             src = ./.;
 
             format = "shards";
-            lockFile = ./shard.lock;
             shardsFile = ./shards.nix;
 
-            buildInputs = with pkgs; [ openssl pkg-config vips ] ++ [ crystal ];
-
-            nativeBuildInputs = with pkgs; [ openssl pkg-config vips ] ++ [ crystal ];
-
-            doInstallCheck = false;
-
-            crystal = crystal;
+            buildInputs = with pkgs; [ openssl pkg-config vips ];
 
             meta = {
               description = "A server-side renderer API for Geometry Dash icons";
@@ -52,6 +44,7 @@
           nativeBuildInputs = with pkgs; [
             pkg-config
             crystal
+            vips
           ];
         };
       }) // {
