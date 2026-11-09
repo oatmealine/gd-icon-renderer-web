@@ -1,12 +1,12 @@
 {
-  gd-icon-renderer = {
+  "gd-icon-renderer" = {
     url = "https://github.com/oatmealine/gd-icon-renderer.git";
-    rev = "4e0c9b8a5a23376ae7be7d19087b7ce7d5d5a77d";
-    sha256 = "169a4bp6v6g30w532zf30f1ppjwxwsyg5wis4snnwxhhqzm26a0a";
+    rev = "0d91ffb7c0f3e38ea4ea7638c90a45160d2ffeac";
+    sha256 = "06j4g7h6qhdlc6zw3hmxyjsp55m2q3y0l17msj9isvcqml0nqr43";
   };
-  vips = {
+  "vips" = {
     url = "https://github.com/naqvis/crystal-vips.git";
-    rev = "1c40bc01dc31e8d40a4fc745f7ae0b47898299fa";
-    sha256 = "0dyv6b1c3z2wiv0y9dsqn8clzag8in4cb32g218fpfx3djblmk04";
+    rev = "0f4d3914985865a020168b0f48ece07416eeb459";
+    sha256 = "10bgqgzhnf2ikvmw1cml5q6jzn4hj70n0a29iwqqi1anw1pq5lm9";
   };
 }

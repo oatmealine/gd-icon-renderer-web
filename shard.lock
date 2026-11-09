@@ -2,9 +2,9 @@ version: 2.0
 shards:
   gd-icon-renderer:
     git: https://github.com/oatmealine/gd-icon-renderer.git
-    version: 0.2.0+git.commit.4e0c9b8a5a23376ae7be7d19087b7ce7d5d5a77d
+    version: 0.2.0+git.commit.0d91ffb7c0f3e38ea4ea7638c90a45160d2ffeac
 
   vips:
     git: https://github.com/naqvis/crystal-vips.git
-    version: 0.1.4+git.commit.1c40bc01dc31e8d40a4fc745f7ae0b47898299fa
+    version: 0.1.6+git.commit.0f4d3914985865a020168b0f48ece07416eeb459
 
